@@ -121,11 +121,11 @@ Both photographs ship as a `srcset` ladder, generated from the Apple Photos orig
 
 | File | Pixels | Bytes | Quality |
 |---|---|---|---|
-| `room-1200.jpg` | 1200 × 900 | 268 KB | 74 |
-| `room-2000.jpg` | 2000 × 1500 | 557 KB | 70 |
-| `room-3200.jpg` | 3200 × 2400 | 976 KB | 62 |
-| `booth-700.jpg` | 394 × 700 | 56 KB | 76 |
-| `booth-1400.jpg` | 788 × 1400 | 144 KB | 68 |
+| `room-1200.jpg` | 1200 × 900 | 259 KB | 74 |
+| `room-2000.jpg` | 2000 × 1500 | 541 KB | 70 |
+| `room-3200.jpg` | 3200 × 2400 | 951 KB | 62 |
+| `booth-700.jpg` | 394 × 700 | 55 KB | 76 |
+| `booth-1400.jpg` | 788 × 1400 | 140 KB | 68 |
 
 The hero is full-bleed, so its `sizes` is simply `100vw`. The booth image sits in a grid column that is about 40% of a container capped at 1180px and goes full width below 820px, so its `sizes` is `(max-width: 820px) 100vw, (min-width: 1240px) 470px, 40vw`. The `src` fallbacks are the middle rungs, `room-2000.jpg` and `booth-1400.jpg`, so a browser ignoring `srcset` gets a usable image rather than the largest one.
 
@@ -223,7 +223,7 @@ The red glyph also passed at the additional short/tall viewport sizes above. The
 
 HTML Tidy found no structural errors after escaping the font URL's ampersands. Its remaining warnings call `fetchpriority` and `decoding` proprietary; this installed validator predates those standard attributes. CSS was read for cascade and no-op rules. Removed unused colour variables and the `background-color` transition that could not animate the set links' gradient image. Removed body overflow clipping so the width checks measure layout instead of hiding defects. The grain remains fixed at 30% opacity with overlay blending, but its layer now covers one viewport instead of four. Focus styles, SoundCloud capitalization, font-weight documentation and the full glow period are consistent.
 
-The hero is eager and high priority; the booth is lazy, and both have async decoding and intrinsic dimensions. The hero remains a **580,115-byte JPEG**, so its transfer is still the dominant local asset. The original JPEG remains the social image. Google Fonts still adds a blocking stylesheet followed by font downloads: both preconnects and `display=swap` remain, and the unused Newsreader 400 request was removed. Firefox loaded Big Shoulders Display at 500/700/800, Newsreader 300 upright/italic, and Space Mono 400/700. Cross-origin timing entries hid transfer sizes, so this review does not claim a measured font-byte saving or a production LCP score. No preload was added for third-party font URLs that Google may change.
+The hero is eager and high priority; the booth is lazy, and both have async decoding and intrinsic dimensions. The hero's largest rung is a 951 KB JPEG and its default `src` rung 541 KB, so its transfer is still the dominant local asset. The original JPEG remains the social image. Google Fonts still adds a blocking stylesheet followed by font downloads: both preconnects and `display=swap` remain, and the unused Newsreader 400 request was removed. Firefox loaded Big Shoulders Display at 500/700/800, Newsreader 300 upright/italic, and Space Mono 400/700. Cross-origin timing entries hid transfer sizes, so this review does not claim a measured font-byte saving or a production LCP score. No preload was added for third-party font URLs that Google may change.
 
 No JavaScript, analytics, libraries, build step, light theme, Facebook link or bio was added. The review did not edit the vault.
 
