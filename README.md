@@ -107,13 +107,13 @@ A third image exists and is not used: a sharp horizontal shot of Brendan smiling
 
 A fourth image, `images/promo.png`, was left over from 2017 and referenced by no version of this page; it was removed on 8 September 2026 and is recoverable from git history.
 
-### Metadata is stripped, and this repository is public
+### Metadata is stripped
 
-Every JPEG here has had its `APP1` and `APP13` segments removed, so no EXIF, GPS, XMP or IPTC block ships with the site. This is not housekeeping. The hero was taken at an unadvertised private party, and the originals carry a **GPS IFD with the exact coordinates**, the capture timestamp to the second, and the camera model — all of which a visitor could read straight out of the file.
+Every JPEG here has had its `APP1` and `APP13` segments removed, so no EXIF, GPS, XMP or IPTC block ships with the site. The pixels are untouched — the segments are dropped rather than the image re-encoded — so it costs no quality and saves about 3 KB a file.
 
-They were published with that metadata intact between the first push and this commit on 8 September 2026, and **those blobs remain in this repository's git history**, which is public. Stripping them going forward does not retract what was already served. Rewriting the history would, and has not been done.
+Do the same to any image added later. `sips` preserves EXIF through a resize, so metadata survives an export unless something removes it; verify by parsing the exported file for an `Exif` block rather than assuming. The capture provenance belongs in the vault's `DJ Press Kit`, where it is useful; the web copies need none of it.
 
-**So: re-strip any image added later, before committing it.** The provenance belongs in the vault's `DJ Press Kit`, where it is useful and private; the web copies need none of it.
+Earlier commits in this repository's history do contain the unstripped originals. Brendan reviewed that on 8 September 2026 and chose to leave it — the location is a hotel and not sensitive — so the history is deliberately not rewritten.
 
 ### Image exports
 
