@@ -58,9 +58,11 @@ Three faces, three jobs.
 
 ### Layout: a build, then a release
 
-Full-bleed photograph, wordmark and sound line over its darkened lower left, then everything after it quiet: three plain sections, rules rather than cards, no boxes. The page is mostly black space.
+Full-bleed photograph, wordmark and sound line over its darkened lower left, then three bands: bio beside the venues, the set list full width, and the second photograph beside the booking details. Rules rather than cards, no boxes. The page is mostly black space.
 
 That is not minimalism for its own sake. Brendan's set-construction philosophy is patience — long tension, careful transitions, the setup mattering more than the peak — and a page that shouts on every section is the opposite claim about the same person.
+
+**Three bands rather than five.** The first build gave the bio, the venues and the bookings a full-width section each, which on a wide screen produced tall strips of empty space beside short content — vertical, gappy, and slow to read. Pairing bio with venues, and the portrait with the booking block, fills both bands horizontally and cuts roughly a third off the page height without removing anything. The two side-by-side bands also let the second photograph anchor the foot of the page, where the content is otherwise small type. Everything collapses to one column below 820px.
 
 ### Motion: two beats at 127 BPM
 

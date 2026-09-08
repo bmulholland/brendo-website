@@ -72,7 +72,7 @@
   /* ---------- hero ---------- */
   .hero {
     position: relative;
-    min-height: min(78vh, 760px);
+    min-height: min(70vh, 680px);
     padding-top: 2rem;
     display: flex;
     align-items: flex-end;
@@ -156,15 +156,10 @@
   }
 
   /* ---------- bio ---------- */
-  #about {
-    padding-block: clamp(2.6rem, 6vh, 4.2rem);
-    border-top: 1px solid var(--rule);
-  }
-
   .bio {
     margin: 0;
-    max-width: 46ch;
-    font-size: clamp(1.05rem, .7vw + .85rem, 1.3rem);
+    max-width: 42ch;
+    font-size: clamp(1.05rem, .7vw + .85rem, 1.28rem);
     line-height: 1.62;
     font-weight: 300;
     color: var(--bone);
@@ -173,8 +168,28 @@
 
   /* ---------- sections ---------- */
   section {
-    padding-block: clamp(3.5rem, 8vh, 6rem);
+    padding-block: clamp(2.6rem, 5.5vh, 4.2rem);
     border-top: 1px solid var(--rule);
+  }
+
+  /* two bands that fill the width instead of five that stack */
+  .band {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .band--close {
+    grid-template-columns: minmax(0, .62fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .band__side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.4rem;
   }
 
   .sec-head {
@@ -243,13 +258,6 @@
   .set:hover .set__n, .set:focus-visible .set__n { color: var(--ember-hi); }
 
   /* ---------- played: portrait beside the venue list ---------- */
-  .played-grid {
-    display: grid;
-    grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
-    gap: clamp(2rem, 5vw, 4rem);
-    align-items: start;
-  }
-
   .portrait {
     position: relative;
     margin: 0;
@@ -293,13 +301,6 @@
   }
 
   /* ---------- booking ---------- */
-  .booking {
-    display: grid;
-    grid-template-columns: 1.25fr .75fr;
-    gap: 3rem;
-    align-items: start;
-  }
-
   .mailto {
     display: inline-block;
     font-family: "Big Shoulders Display", "Arial Narrow", sans-serif;
@@ -387,10 +388,9 @@
         linear-gradient(to right, rgba(8, 6, 11, .85), rgba(8, 6, 11, .8) 52%, transparent);
     }
     .wordmark { font-size: clamp(4.4rem, 25vw, 9rem); }
-    .played-grid { grid-template-columns: 1fr; }
-    .portrait { aspect-ratio: 4 / 3; max-height: 58vh; }
+    .band, .band--close { grid-template-columns: 1fr; gap: 2.2rem; }
+    .portrait { aspect-ratio: 4 / 3; max-height: 52vh; min-height: 0; }
     .portrait img { object-position: 50% 18%; }
-    .booking { grid-template-columns: 1fr; gap: 2.2rem; }
     .set { grid-template-columns: 2.2rem minmax(0, 1fr); }
     .set__meta { grid-column: 2; white-space: normal; }
   }
@@ -416,8 +416,42 @@
 <main class="wrap">
 
 
-  <section id="about">
-    <p class="bio">Brendo is a Berlin-based DJ and long-time collector. He moves between softer dark techno, dark disco, indie dance and leftfield electronics, building patient arcs that ebb and flow toward emotional peaks.</p>
+  <section id="about" class="band">
+    <div>
+      <p class="bio">Brendo is a Berlin-based DJ and long-time collector. He moves between softer dark techno, dark disco, indie dance and leftfield electronics, building patient arcs that ebb and flow toward emotional peaks.</p>
+    </div>
+
+    <div>
+      <div class="sec-head"><h2>Played</h2></div>
+      <div class="venues">
+        <div>
+          <h3>Berlin</h3>
+          <ul>
+            <li>S&uuml;&szlig; war Gestern</li>
+            <li>Gisela</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Vancouver</h3>
+          <ul>
+            <li>MIA</li>
+            <li>Odyssey</li>
+            <li>The Waldorf</li>
+            <li>Fortune Sound Club</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Festivals &amp; radio</h3>
+          <ul>
+            <li>Futuristische Feen</li>
+            <li>Bad Collective</li>
+            <li>Tribal River Renegade</li>
+            <li>Beatginnings</li>
+            <li>CiTR Radio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="sets">
@@ -455,60 +489,21 @@
     </div>
   </section>
 
-  <section id="played">
-    <div class="sec-head">
-      <h2>Played</h2>
-    </div>
-
-    <div class="played-grid">
-      <figure class="portrait">
-        <img src="images/booth-1400.jpg"
+  <section id="bookings" class="band band--close">
+    <figure class="portrait">
+      <img src="images/booth-1400.jpg"
              srcset="images/booth-700.jpg 700w, images/booth-1400.jpg 1400w"
-             sizes="(max-width: 820px) 100vw, (min-width: 1240px) 458px, 38vw"
+             sizes="(max-width: 820px) 100vw, (min-width: 1240px) 420px, 34vw"
              width="788" height="1400" loading="lazy" decoding="async"
              alt="Brendo at the decks, lit red from the mixer.">
-      </figure>
+    </figure>
 
-      <div class="venues">
-        <div>
-          <h3>Berlin</h3>
-          <ul>
-            <li>Süß war Gestern</li>
-            <li>Gisela</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Vancouver</h3>
-          <ul>
-            <li>MIA</li>
-            <li>Odyssey</li>
-            <li>The Waldorf</li>
-            <li>Fortune Sound Club</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Festivals &amp; radio</h3>
-          <ul>
-            <li>Futuristische Feen</li>
-            <li>Tribal River Renegade</li>
-            <li>Beatginnings</li>
-            <li>CiTR Radio</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="bookings">
-    <div class="sec-head">
-      <h2>Bookings</h2>
-    </div>
-
-    <div class="booking">
+    <div class="band__side">
       <div>
+        <div class="sec-head"><h2>Bookings</h2></div>
         <a class="mailto" href="mailto:bookings@brendo.ca">bookings@brendo.ca</a>
         <div class="elsewhere">
-          <a href="https://soundcloud.com/brendobrendo">SoundCloud</a>
+          <a href="https://soundcloud.com/brendobrendo">Soundcloud</a>
           <a href="https://www.instagram.com/brendobrendo/">Instagram</a>
           <a href="https://www.mixcloud.com/brendobrendo/">Mixcloud</a>
         </div>
@@ -516,15 +511,13 @@
 
       <div class="rider">
         <b>Rider</b>
-        Minimum <span>2× Pioneer CDJ-2000NXS2</span><br>
-        Preferred <span>3× CDJ-3000 / CDJ-3000X via Pro DJ Link</span><br>
+        Minimum <span>2&times; Pioneer CDJ-2000NXS2</span><br>
+        Preferred <span>3&times; CDJ-3000 / CDJ-3000X via Pro DJ Link</span><br>
         Preferred mixer <span>Allen &amp; Heath Xone:96</span><br>
         Also fine <span>Xone:92, DJM-V10 (advance notice required)</span>
       </div>
     </div>
   </section>
-
-</main>
 
   <footer class="wrap">
     <span class="label">Brendo · Berlin</span>
