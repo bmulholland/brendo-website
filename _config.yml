@@ -1,0 +1,8 @@
+# The rationale and agent-contract documents are for people working on this
+# repository, not for visitors to brendo.ca. Without this they are served as
+# public pages at /README.md, /CLAUDE.md and /AGENTS.md.
+exclude:
+  - README.md
+  - CLAUDE.md
+  - AGENTS.md
+  - _config.yml

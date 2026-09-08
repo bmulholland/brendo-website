@@ -41,6 +41,7 @@ So the palette was derived from the photographs. Sampling the red-lit booth shot
 --ember-hi #ff4a2e   hover, small red labels, and the italic phrase
 --bone     #ece5df   warm off-white — film white, not #fff
 --dim      #8d8189   warm-violet grey
+--rule     #241d29   the hairline between sections
 ```
 
 Corroborating rather than driving the choice: Brendan's SoundCloud avatar and banner are also black-and-red. He had already converged on this without writing it down.
@@ -93,11 +94,11 @@ A fixed SVG `feTurbulence` layer at 30% opacity in `overlay` blend mode. This is
 
 Two, both real, both his.
 
-**`images/room.jpg` — the hero.** A wide magenta-lit interior: tall windows onto a floodlit garden, a disco ball, Brendan blurred mid-motion behind CDJs. It is the strongest image of the set because it has a *place* in it, and because it reads as dark disco rather than techno — which is where the vault puts his centre of gravity, while techno is the base texture underneath.
+**`images/room.jpg` — the hero.** A wide magenta-lit interior: tall windows onto a floodlit forest, a big matte paper lampshade overhead, Brendan blurred mid-motion behind CDJs. It is the strongest image of the set because it has a *place* in it, and because it reads as dark disco rather than techno — which is where the vault puts his centre of gravity, while techno is the base texture underneath.
 
 It is also the image Weiter Studio picked out, which is worth something given that music branding is their trade.
 
-**Asset, date and location identified.** Apple Photos asset `449163A8-908D-47B1-B321-6D6215B4FFB6` (`IMG_2906.HEIC`), in his `DJ` album. Taken **28 July 2024** at **Schmöckwitzer Werder, Berlin**, on an iPhone 14 Pro. The exact coordinates and capture time are in the vault, not here — see below. Per Brendan's account the event is Futuristische Feen Festival, held at a hotel there, and by his description it was unadvertised and friends-of-friends. The motion blur is a 0.7-second handheld exposure at ISO 1600, not a filter.
+**Asset, date and location identified.** Apple Photos asset `449163A8-908D-47B1-B321-6D6215B4FFB6` (`IMG_2906.HEIC`), in his `DJ` album. Taken **28 July 2024** at **Schmöckwitzer Werder, Berlin**, on an iPhone 14 Pro. The exact coordinates and capture time are in the vault, not here — see below. Per Brendan's account the event is Futuristische Feen Festival, held at a hotel there, and by his description it was unadvertised and friends-of-friends. The motion blur is a **1/24-second** handheld exposure at ISO 1600 and f/1.78, not a filter.
 
 The file used here is downscaled from the 4032 × 3024 original. **Whether this particular night is Futuristische Feen is his recollection, not established.** His own recording of an FFF set is filed as `Brendo - Hummerhalle - FFF 28.08.2024` — a month later than this photograph and at a differently-named room. Same day of the month, different month and venue, so the two live readings are that these are two separate nights, or that one of the two labels is wrong; nothing to hand decides between them. Do not caption this image with a festival name until it is settled. The date and the place are solid on their own. A near-identical frame five seconds earlier, `9B8ADAA4-CE5F-42F7-88C3-9C9281D26DBB`, has him more central with his arms out and shows more of the window wall. It is a reasonable alternate and is not currently downloaded from iCloud.
 
@@ -109,11 +110,11 @@ A fourth image, `images/promo.png`, was left over from 2017 and referenced by no
 
 ### Metadata is stripped
 
-Every JPEG here has had its `APP1` and `APP13` segments removed, so no EXIF, GPS, XMP or IPTC block ships with the site. The pixels are untouched — the segments are dropped rather than the image re-encoded — so it costs no quality and saves about 3 KB a file.
+Every JPEG here has had its `APP1` and `APP13` segments removed — EXIF, XMP and the Photoshop/IPTC block — so none of it ships with the site. The pixels are untouched — the segments are dropped rather than the image re-encoded — so it costs no quality and saves about 3 KB a file.
 
-Do the same to any image added later. `sips` preserves EXIF through a resize, so metadata survives an export unless something removes it; verify by parsing the exported file for an `Exif` block rather than assuming. The capture provenance belongs in the vault's `DJ Press Kit`, where it is useful; the web copies need none of it.
+Do the same to any image added later. `sips` preserves EXIF through a resize, so metadata survives an export unless something removes it; verify by parsing the exported file for surviving `APP1`, `APP13` or `COM` segments rather than assuming. A GPS-only check is not enough: XMP rides in `APP1` under a different identifier, and PNG and HEIC keep metadata in chunks and boxes a JPEG-segment check never reaches. The capture provenance belongs in the vault's `DJ Press Kit`, where it is useful; the web copies need none of it.
 
-Earlier commits in this repository's history do contain the unstripped originals. Brendan reviewed that on 8 September 2026 and chose to leave it — the location is a hotel and not sensitive — so the history is deliberately not rewritten.
+Earlier commits contain both the unstripped images and three README revisions that printed the coordinates in plain text. Brendan reviewed that on 8 September 2026 and chose to leave it — the location is a hotel and not sensitive — so the history is deliberately not rewritten.
 
 ### Image exports
 
@@ -127,7 +128,7 @@ Both photographs ship as a `srcset` ladder, generated from the Apple Photos orig
 | `booth-700.jpg` | 394 × 700 | 55 KB | 76 |
 | `booth-1400.jpg` | 788 × 1400 | 140 KB | 68 |
 
-The hero is full-bleed, so its `sizes` is simply `100vw`. The booth image sits in a grid column that is about 40% of a container capped at 1180px and goes full width below 820px, so its `sizes` is `(max-width: 820px) 100vw, (min-width: 1240px) 470px, 40vw`. The `src` fallbacks are the middle rungs, `room-2000.jpg` and `booth-1400.jpg`, so a browser ignoring `srcset` gets a usable image rather than the largest one.
+The hero is full-bleed, so its `sizes` is simply `100vw`. The booth image sits in a grid column that is about 40% of a container capped at 1180px and goes full width below 820px, so its `sizes` is `(max-width: 820px) 100vw, (min-width: 1240px) 458px, 38vw` — 458px is the column's computed width at that breakpoint, and 38vw tracks it below, allowing for the container's 40px inset. The `src` fallbacks are the middle rungs, `room-2000.jpg` and `booth-1400.jpg`, so a browser ignoring `srcset` gets a usable image rather than the largest one.
 
 The hero original is 4032 × 3024, so even the 3200 rung is a downscale and nothing is enlarged. `room-1200.jpg` doubles as the Open Graph image: link previews want roughly 1200px and should not pull a megabyte.
 
@@ -143,7 +144,7 @@ Verify at `https://brendo.ca` rather than the `github.io` URL — the custom dom
 
 ### The DNS defect, resolved 2026-09-08
 
-For nine years the apex `A` records pointed at `192.30.252.153` and `192.30.252.154`, a **retired** GitHub Pages address block. It still answered on plain HTTP, which is why nobody noticed, but the certificate served there covered only `github.com`, so `https://brendo.ca` failed outright and Pages' *Enforce HTTPS* could not be enabled.
+For about eleven years — the `CNAME` commit dates to June 2015 — the apex `A` records pointed at `192.30.252.153` and `192.30.252.154`, a **retired** GitHub Pages address block. It still answered on plain HTTP, which is why nobody noticed, but the certificate served there covered only `github.com`, so `https://brendo.ca` failed outright and Pages' *Enforce HTTPS* could not be enabled.
 
 The two old records were replaced with the four addresses GitHub documents for an apex domain:
 
@@ -156,7 +157,7 @@ The two old records were replaced with the four addresses GitHub documents for a
 
 GitHub then issued a Let's Encrypt certificate covering `brendo.ca` and `www.brendo.ca`, and *Enforce HTTPS* is on. Verified the same day: `https://brendo.ca` returns the page, `http://` answers `301` to the canonical `https://` URL, and the images and favicons load. The `TXT` records were left alone — they carry the Google Workspace SPF and site verification for the `@brendo.ca` mail that `bookings@brendo.ca` runs on, entirely independent of Pages.
 
-`www.brendo.ca` still has no `A` or `CNAME` record and does not resolve, though the certificate would already cover it. Add a `CNAME` for `www` pointing at `bmulholland.github.io.` if that is ever wanted; the apex is what `CNAME` binds and what the page advertises.
+`www.brendo.ca` resolves too — a `CNAME` to `bmulholland.github.io.`, covered by the same certificate, `301`-redirecting to the apex. The apex is what the repo's `CNAME` file binds and what the page advertises.
 
 ---
 
@@ -179,6 +180,7 @@ Everything above is a decision that was made deliberately. These are not — the
 - ~~Hero resolution.~~ Closed: both photographs now ship as `srcset` ladders rather than single files. See §Image exports.
 - ~~`og:image` unreachable.~~ Closed by the DNS repair above; it now points at `images/room-1200.jpg`, a 1200 × 900 export sized for link previews rather than the full hero.
 - ~~No canonical URL and no `theme-color`.~~ Closed, with `og:type`, image dimensions and image alt text also supplied.
+- ~~`README.md` and the agent contracts served as public pages at `https://brendo.ca/README.md`.~~ Closed by `_config.yml`, which excludes them from the Jekyll build.
 - ~~Hero contrast unmeasured.~~ Closed for the tested viewports; measurements and their scope are below. The veil and the red letter's dark supporting shadow were strengthened after failures.
 - ~~Only headless Chrome at two widths.~~ Expanded to installed Chrome and headless Firefox. **Safari and a physical phone remain untested.** Safari 26.6.2's WebDriver refused a session because “Allow remote automation” is disabled; no Safari setting was changed.
 
@@ -196,7 +198,7 @@ All four set destinations and the artist profile returned HTTP 200 during review
 
 **The rider now carries the vault's requirements in full.** Brendan explicitly requested the missing `CDJ-3000X` on 2026-09-08. The preferred player row now includes both models, the Xone:96 is labelled “Preferred mixer”, and the DJM-V10 specifies “advance notice required”. The minimum player model/count, preferred three-player count and Pro DJ Link, and acceptable mixer models match `DJ Press Kit` §Tech Rider.
 
-The source photographs and their README provenance were updated concurrently by another session. This review used the resulting **2000 × 1500** hero, not the original 1280 × 960 upload. `CLAUDE.md` now points here for each image's provenance instead of repeating the stale claim that both are unresolved. Its rule against unverified captions is unchanged. The photo's July date does not establish a correction to the recording date; the site only gives the Feen set's year.
+The source photographs and their README provenance were updated concurrently by another session. This review used the **2000 × 1500** hero. The 1280 × 960 file it replaced was a working-tree state, never committed, so no blob of it exists in this history. `CLAUDE.md` now points here for each image's provenance instead of repeating the stale claim that both are unresolved. Its rule against unverified captions is unchanged. The photo's July date does not establish a correction to the recording date; the site only gives the Feen set's year.
 
 ### Rendering and accessibility
 
@@ -223,7 +225,7 @@ The red glyph also passed at the additional short/tall viewport sizes above. The
 
 HTML Tidy found no structural errors after escaping the font URL's ampersands. Its remaining warnings call `fetchpriority` and `decoding` proprietary; this installed validator predates those standard attributes. CSS was read for cascade and no-op rules. Removed unused colour variables and the `background-color` transition that could not animate the set links' gradient image. Removed body overflow clipping so the width checks measure layout instead of hiding defects. The grain remains fixed at 30% opacity with overlay blending, but its layer now covers one viewport instead of four. Focus styles, SoundCloud capitalization, font-weight documentation and the full glow period are consistent.
 
-The hero is eager and high priority; the booth is lazy, and both have async decoding and intrinsic dimensions. The hero's largest rung is a 951 KB JPEG and its default `src` rung 541 KB, so its transfer is still the dominant local asset. The original JPEG remains the social image. Google Fonts still adds a blocking stylesheet followed by font downloads: both preconnects and `display=swap` remain, and the unused Newsreader 400 request was removed. Firefox loaded Big Shoulders Display at 500/700/800, Newsreader 300 upright/italic, and Space Mono 400/700. Cross-origin timing entries hid transfer sizes, so this review does not claim a measured font-byte saving or a production LCP score. No preload was added for third-party font URLs that Google may change.
+The hero is eager and high priority; the booth is lazy, and both have async decoding and intrinsic dimensions. The hero's largest rung is a 951 KB JPEG and its default `src` rung 541 KB, so its transfer is still the dominant local asset. The 1200 rung is the social image. Google Fonts still adds a blocking stylesheet followed by font downloads: both preconnects and `display=swap` remain, and the unused Newsreader 400 request was removed. Firefox loaded Big Shoulders Display at 500/700/800, Newsreader 300 upright/italic, and Space Mono 400/700. Cross-origin timing entries hid transfer sizes, so this review does not claim a measured font-byte saving or a production LCP score. No preload was added for third-party font URLs that Google may change.
 
 No JavaScript, analytics, libraries, build step, light theme, Facebook link or bio was added. The review did not edit the vault.
 
