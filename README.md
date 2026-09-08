@@ -152,6 +152,8 @@ GitHub Pages, from the **`gh-pages`** branch of `bmulholland/brendo-website`. No
 
 Verify at `https://brendo.ca` rather than the `github.io` URL — the custom domain is the part that has historically been broken.
 
+**Wait on the built commit, never on the build status.** `gh api repos/bmulholland/brendo-website/pages/builds/latest` reports the *previous* build as `built` for the first seconds after a push, so a loop that waits for `status == "built"` returns immediately and the check that follows reads the old page. It is a convincing failure: the site answers `200`, the content-length looks about right, and only a diff against the local file shows the wrong version. Compare `.commit` against `git rev-parse HEAD` instead, then diff the served HTML against `index.html` — byte-identical or it did not land.
+
 ### The DNS defect, resolved 2026-09-08
 
 For about eleven years — the `CNAME` commit dates to June 2015 — the apex `A` records pointed at `192.30.252.153` and `192.30.252.154`, a **retired** GitHub Pages address block. It still answered on plain HTTP, which is why nobody noticed, but the certificate served there covered only `github.com`, so `https://brendo.ca` failed outright and Pages' *Enforce HTTPS* could not be enabled.
