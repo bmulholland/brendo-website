@@ -97,7 +97,7 @@ Two, both real, both his.
 
 It is also the image Weiter Studio picked out, which is worth something given that music branding is their trade.
 
-**Asset, date and location identified.** Apple Photos asset `449163A8-908D-47B1-B321-6D6215B4FFB6` (`IMG_2906.HEIC`), in his `DJ` album. Taken **28 July 2024 at 04:12 CEST** on an iPhone 14 Pro, GPS `52.36891, 13.65047` — **Schmöckwitzer Werder, Berlin**. Per Brendan's account the event is Futuristische Feen Festival, held at a hotel there, and by his description it was unadvertised and friends-of-friends. The motion blur is a 0.7-second handheld exposure at ISO 1600, not a filter.
+**Asset, date and location identified.** Apple Photos asset `449163A8-908D-47B1-B321-6D6215B4FFB6` (`IMG_2906.HEIC`), in his `DJ` album. Taken **28 July 2024** at **Schmöckwitzer Werder, Berlin**, on an iPhone 14 Pro. The exact coordinates and capture time are in the vault, not here — see below. Per Brendan's account the event is Futuristische Feen Festival, held at a hotel there, and by his description it was unadvertised and friends-of-friends. The motion blur is a 0.7-second handheld exposure at ISO 1600, not a filter.
 
 The file used here is downscaled from the 4032 × 3024 original. **Whether this particular night is Futuristische Feen is his recollection, not established.** His own recording of an FFF set is filed as `Brendo - Hummerhalle - FFF 28.08.2024` — a month later than this photograph and at a differently-named room. Same day of the month, different month and venue, so the two live readings are that these are two separate nights, or that one of the two labels is wrong; nothing to hand decides between them. Do not caption this image with a festival name until it is settled. The date and the place are solid on their own. A near-identical frame five seconds earlier, `9B8ADAA4-CE5F-42F7-88C3-9C9281D26DBB`, has him more central with his arms out and shows more of the window wall. It is a reasonable alternate and is not currently downloaded from iCloud.
 
@@ -106,6 +106,14 @@ The file used here is downscaled from the 4032 × 3024 original. **Whether this 
 A third image exists and is not used: a sharp horizontal shot of Brendan smiling behind the decks (`C40F4E2F-9580-415B-AAE9-9221AC185791`). It is warm and very usable, and it reads as a friendly guy rather than as this music. Good for a booking email; wrong for the top of this page.
 
 A fourth image, `images/promo.png`, was left over from 2017 and referenced by no version of this page; it was removed on 8 September 2026 and is recoverable from git history.
+
+### Metadata is stripped, and this repository is public
+
+Every JPEG here has had its `APP1` and `APP13` segments removed, so no EXIF, GPS, XMP or IPTC block ships with the site. This is not housekeeping. The hero was taken at an unadvertised private party, and the originals carry a **GPS IFD with the exact coordinates**, the capture timestamp to the second, and the camera model — all of which a visitor could read straight out of the file.
+
+They were published with that metadata intact between the first push and this commit on 8 September 2026, and **those blobs remain in this repository's git history**, which is public. Stripping them going forward does not retract what was already served. Rewriting the history would, and has not been done.
+
+**So: re-strip any image added later, before committing it.** The provenance belongs in the vault's `DJ Press Kit`, where it is useful and private; the web copies need none of it.
 
 ### Image exports
 
