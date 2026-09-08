@@ -27,7 +27,7 @@ A change here that is really a change to one of those is not finished until the 
 
 **There is no commissioned visual identity.** The 2026 Weiter Studio engagement delivered strategy and copy only. The yellow-on-black moodboard in the vault is that studio's slide styling, not Brendo's colour. The palette here was derived from the photographs and is this site's own choice — revise it on its merits, but do not "restore" a brand standard that does not exist.
 
-**Never caption a photograph with a venue or date the vault does not confirm.** Both current images have unresolved provenance; `README.md` states exactly what is and is not known about each.
+**Never caption a photograph with a venue or date the vault does not confirm.** `README.md` states exactly what is and is not known about each image.
 
 **No Facebook link.** The account is not maintained. Its absence is deliberate.
 
