@@ -82,7 +82,7 @@ A fixed SVG `feTurbulence` layer at 30% opacity in `overlay` blend mode. This is
 
 **A short bio, and no more than that.** Both fuller bios in the vault are blocked. The June 2026 press copy leans on *hypnotic* and *driving* — two words Brendan explicitly rules out as descriptions of his sound, and a reader who has heard him play independently flagged the same sentence.
 
-What the page carries is the vault's draft bio, trimmed. Its first sentence restated the standfirst almost word for word and its last duplicated the Played list, so both were cut; what is left is the two clauses that say something neither of those does — the range he moves across, and the shape of a set. Brendan approved adding it on 8 September 2026. Anything longer is still vault work: the full replacement bio has never been checked in his voice.
+What the page carries is the vault's draft bio, trimmed and lightly reworded: its opening clause, then its second sentence recast from *"Moving between…, he builds…"* to *"He moves between…, building…"*. The first sentence's tail restated the standfirst almost word for word and the last duplicated the Played list, so both went. Brendan approved adding a bio on 8 September 2026; he has not read back the exact two sentences that resulted. Anything longer is still vault work: the full replacement bio has never been checked in his voice.
 
 **No genre names.** `DJ Identity` §Genre Language Does Not Describe the Sound rules that in this corner of dance music genre labels are retail categories, contested and misleading. The page describes the music instead. Three words are ruled out outright: *driving* (reads as slamming), *hypnotic* (reads as a different lane), and *psychedelic* hitched to the psy- prefix.
 
@@ -156,7 +156,7 @@ Verify at `https://brendo.ca` rather than the `github.io` URL — the custom dom
 
 ### The DNS defect, resolved 2026-09-08
 
-For about eleven years — the `CNAME` commit dates to June 2015 — the apex `A` records pointed at `192.30.252.153` and `192.30.252.154`, a **retired** GitHub Pages address block. It still answered on plain HTTP, which is why nobody noticed, but the certificate served there covered only `github.com`, so `https://brendo.ca` failed outright and Pages' *Enforce HTTPS* could not be enabled.
+The apex `A` records pointed at `192.30.252.153` and `192.30.252.154`. That was GitHub's own documented target when they were set — the November 2014 legacy-IP deprecation moved Pages onto that block, and the `CNAME` commit here is June 2015 — so they were correct at the time and went stale later, once GitHub moved to `185.199.108–111.153` and custom-domain HTTPS existed at all. It still answered on plain HTTP, which is why nobody noticed, but the certificate served there covered only `github.com`, so `https://brendo.ca` failed outright and Pages' *Enforce HTTPS* could not be enabled.
 
 The two old records were replaced with the four addresses GitHub documents for an apex domain:
 
@@ -179,7 +179,7 @@ GitHub then issued a Let's Encrypt certificate covering `brendo.ca` and `www.bre
 
 **Add a set.** A new row in the `.sets` list. The number in `.set__n` is a position in the list, not an identifier, so renumber the rest. Add it to `DJ Press Kit` §Recorded Sets too, or the next person to derive this page from the vault will delete it.
 
-**Add a venue.** Same: the list here, and `DJ Press Kit` §Venues Played. **Rooms only.** The list is grouped by city — Berlin, then Vancouver — and holds places he played, not the people who booked them. A collective, a promoter or a recurring event series belongs in the vault against the room it happened in, never here: Bad Collective ran the Halloween night *at Gisela*, and Beatginnings was a series for DJs new to the scene that ran *at MIA and Fortune Sound Club*. Listing either would double-count a room already in the column. Radio is off the list too — CiTR is a real credit and not a room.
+**Add a venue.** Same: the list here, and `DJ Press Kit` §Venues Played. **Name the room where there is a room to name.** The list is grouped by city — Berlin, then Vancouver — and holds places he played, not the people who booked them. Two entries are occasions rather than rooms and stay anyway: Futuristische Feen and Tribal River Renegade recur, their rooms vary or are outdoor, and dropping them would lose a real credit. A collective, a promoter or a recurring event series belongs in the vault against the room it happened in, never here: Bad Collective ran the Halloween night *at Gisela*, and Beatginnings was a series for DJs new to the scene that ran *at MIA and Fortune Sound Club*. Listing either would double-count a room already in the column. Radio is off the list too — CiTR is a real credit and not a room.
 
 **Change the copy.** Almost certainly not a change to this repository. Find the claim's home in the table above and change it there first.
 
