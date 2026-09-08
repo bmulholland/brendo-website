@@ -105,7 +105,25 @@ The file used here is downscaled from the 4032 × 3024 original. **Whether this 
 
 A third image exists and is not used: a sharp horizontal shot of Brendan smiling behind the decks (`C40F4E2F-9580-415B-AAE9-9221AC185791`). It is warm and very usable, and it reads as a friendly guy rather than as this music. Good for a booking email; wrong for the top of this page.
 
-`images/promo.png` is left over from 2017 and is unreferenced.
+A fourth image, `images/promo.png`, was left over from 2017 and referenced by no version of this page; it was removed on 8 September 2026 and is recoverable from git history.
+
+### Image exports
+
+Both photographs ship as a `srcset` ladder, generated from the Apple Photos originals rather than from anything previously in this repo. Quality falls as width rises, because the larger the file the less each JPEG artefact costs on screen and the more each byte costs on the wire.
+
+| File | Pixels | Bytes | Quality |
+|---|---|---|---|
+| `room-1200.jpg` | 1200 × 900 | 268 KB | 74 |
+| `room-2000.jpg` | 2000 × 1500 | 557 KB | 70 |
+| `room-3200.jpg` | 3200 × 2400 | 976 KB | 62 |
+| `booth-700.jpg` | 394 × 700 | 56 KB | 76 |
+| `booth-1400.jpg` | 788 × 1400 | 144 KB | 68 |
+
+The hero is full-bleed, so its `sizes` is simply `100vw`. The booth image sits in a grid column that is about 40% of a container capped at 1180px and goes full width below 820px, so its `sizes` is `(max-width: 820px) 100vw, (min-width: 1240px) 470px, 40vw`. The `src` fallbacks are the middle rungs, `room-2000.jpg` and `booth-1400.jpg`, so a browser ignoring `srcset` gets a usable image rather than the largest one.
+
+The hero original is 4032 × 3024, so even the 3200 rung is a downscale and nothing is enlarged. `room-1200.jpg` doubles as the Open Graph image: link previews want roughly 1200px and should not pull a megabyte.
+
+Regenerate any rung from the originals, not from a smaller export. The hero is Apple Photos `449163A8-908D-47B1-B321-6D6215B4FFB6`; the booth is `083F732D-77F6-4FA1-B966-50D5500930A1`.
 
 ---
 
@@ -113,13 +131,13 @@ A third image exists and is not used: a sharp horizontal shot of Brendan smiling
 
 GitHub Pages, from the **`gh-pages`** branch of `bmulholland/brendo-website`. No build step: commit and push, and Pages serves the repository root. `CNAME` binds it to the apex domain.
 
-Verify at `https://brendo.ca` rather than the `github.io` URL — the custom domain is the part that has historically been broken, and it is broken now.
+Verify at `https://brendo.ca` rather than the `github.io` URL — the custom domain is the part that has historically been broken.
 
-### The DNS defect
+### The DNS defect, resolved 2026-09-08
 
-As of 2026-09-08 the apex `A` records point at `192.30.252.153` and `192.30.252.154`. That is a **retired** GitHub Pages address block. It still answers on plain HTTP, which is why nobody noticed, but the certificate served there covers only `github.com`, so **`https://brendo.ca` fails outright** and Pages' *Enforce HTTPS* setting cannot be enabled.
+For nine years the apex `A` records pointed at `192.30.252.153` and `192.30.252.154`, a **retired** GitHub Pages address block. It still answered on plain HTTP, which is why nobody noticed, but the certificate served there covered only `github.com`, so `https://brendo.ca` failed outright and Pages' *Enforce HTTPS* could not be enabled.
 
-The four addresses GitHub currently documents for an apex domain:
+The two old records were replaced with the four addresses GitHub documents for an apex domain:
 
 ```
 185.199.108.153
@@ -128,9 +146,9 @@ The four addresses GitHub currently documents for an apex domain:
 185.199.111.153
 ```
 
-Replace the two old `A` records with those four, wait for propagation, then turn on *Enforce HTTPS* in the repository's Pages settings. Leave the `TXT` records alone — they carry Google Workspace SPF and site verification for the `@brendo.ca` mail, which is what `bookings@brendo.ca` runs on and is entirely independent of Pages.
+GitHub then issued a Let's Encrypt certificate covering `brendo.ca` and `www.brendo.ca`, and *Enforce HTTPS* is on. Verified the same day: `https://brendo.ca` returns the page, `http://` answers `301` to the canonical `https://` URL, and the images and favicons load. The `TXT` records were left alone — they carry the Google Workspace SPF and site verification for the `@brendo.ca` mail that `bookings@brendo.ca` runs on, entirely independent of Pages.
 
-Until that is done, do not hand anyone an `https://` link to this domain.
+`www.brendo.ca` still has no `A` or `CNAME` record and does not resolve, though the certificate would already cover it. Add a `CNAME` for `www` pointing at `bmulholland.github.io.` if that is ever wanted; the apex is what `CNAME` binds and what the page advertises.
 
 ---
 
@@ -150,15 +168,15 @@ Everything above is a decision that was made deliberately. These are not — the
 
 - ~~No favicon.~~ Closed: a local SVG red `o` on the page's near-black, with a 32px ICO fallback. The icon is a simple drawn echo of the wordmark, with no font request.
 - ~~No image loading or decoding hints.~~ Closed: eager, high-priority hero; lazy booth; async decoding and intrinsic dimensions on both.
-- **Hero resolution:** the supplied replacement is 2000 × 1500, up from 1280 × 960. It still enlarges at 2560px and on high-density screens. The original is now identified, so a larger export remains available if that softness is unacceptable; this review did not replace the concurrently supplied photograph.
-- **`og:image` points at `https://brendo.ca/images/room.jpg`**, which cannot resolve until the DNS defect above is fixed. Link previews will be blank until then. This is a consequence of the DNS problem rather than a separate bug, but it will look like a separate bug.
+- ~~Hero resolution.~~ Closed: both photographs now ship as `srcset` ladders rather than single files. See §Image exports.
+- ~~`og:image` unreachable.~~ Closed by the DNS repair above; it now points at `images/room-1200.jpg`, a 1200 × 900 export sized for link previews rather than the full hero.
 - ~~No canonical URL and no `theme-color`.~~ Closed, with `og:type`, image dimensions and image alt text also supplied.
 - ~~Hero contrast unmeasured.~~ Closed for the tested viewports; measurements and their scope are below. The veil and the red letter's dark supporting shadow were strengthened after failures.
 - ~~Only headless Chrome at two widths.~~ Expanded to installed Chrome and headless Firefox. **Safari and a physical phone remain untested.** Safari 26.6.2's WebDriver refused a session because “Allow remote automation” is disabled; no Safari setting was changed.
 
 ## Production review — 2026-09-08
 
-**Deployment still needs the DNS repair and Brendan's push.** Read-only `dig` returned `192.30.252.153` and `192.30.252.154`; no apex AAAA answer. `curl -I https://brendo.ca` failed with certificate hostname mismatch. The replacement A records above still match [GitHub's apex-domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). No DNS, Pages setting or remote branch was changed. The canonical and social image URLs intentionally remain HTTPS; local checks cannot establish a working public preview.
+**At the time of this review, deployment still needed the DNS repair and Brendan's push; both landed later the same day — see §The DNS defect, resolved 2026-09-08.** Read-only `dig` returned `192.30.252.153` and `192.30.252.154`; no apex AAAA answer. `curl -I https://brendo.ca` failed with certificate hostname mismatch. The replacement A records above still match [GitHub's apex-domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). No DNS, Pages setting or remote branch was changed. The canonical and social image URLs intentionally remain HTTPS; local checks cannot establish a working public preview.
 
 ### Copy comparison and resolutions
 

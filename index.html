@@ -7,9 +7,9 @@
 <meta property="og:title" content="Brendo">
 <meta property="og:type" content="website">
 <meta property="og:description" content="Dark, psychedelic dance music — bass-led, chugging, and a bit haunted. Berlin.">
-<meta property="og:image" content="https://brendo.ca/images/room.jpg">
-<meta property="og:image:width" content="2000">
-<meta property="og:image:height" content="1500">
+<meta property="og:image" content="https://brendo.ca/images/room-1200.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="900">
 <meta property="og:image:alt" content="Brendo playing in a magenta-lit room, windows open onto a floodlit forest.">
 <meta property="og:url" content="https://brendo.ca/">
 <meta name="twitter:card" content="summary_large_image">
@@ -385,7 +385,11 @@
 </head>
 <body>
 <header class="hero">
-  <img class="hero__img" src="images/room.jpg" width="2000" height="1500" fetchpriority="high" loading="eager" decoding="async" alt="Brendo playing in a magenta-lit room, windows open onto a floodlit forest.">
+  <img class="hero__img" src="images/room-2000.jpg"
+       srcset="images/room-1200.jpg 1200w, images/room-2000.jpg 2000w, images/room-3200.jpg 3200w"
+       sizes="100vw"
+       width="2000" height="1500" fetchpriority="high" loading="eager" decoding="async"
+       alt="Brendo playing in a magenta-lit room, windows open onto a floodlit forest.">
   <div class="hero__veil" aria-hidden="true"></div>
 
   <div class="hero__inner">
@@ -434,7 +438,11 @@
 
     <div class="played-grid">
       <figure class="portrait">
-        <img src="images/booth.jpg" width="788" height="1400" loading="lazy" decoding="async" alt="Brendo at the decks, lit red from the mixer.">
+        <img src="images/booth-1400.jpg"
+             srcset="images/booth-700.jpg 700w, images/booth-1400.jpg 1400w"
+             sizes="(max-width: 820px) 100vw, (min-width: 1240px) 470px, 40vw"
+             width="788" height="1400" loading="lazy" decoding="async"
+             alt="Brendo at the decks, lit red from the mixer.">
       </figure>
 
       <div class="venues">

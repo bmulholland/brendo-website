@@ -39,4 +39,4 @@ Single file, no libraries, no build, no analytics, no JavaScript. Fonts by `<lin
 
 ## Deploying
 
-Commit to `gh-pages` and push. Verify at `https://brendo.ca`, not the `github.io` URL. **That verification currently fails**: the apex `A` records still point at a retired GitHub address block, so the domain is HTTP-only. `README.md` §The DNS defect has the four current addresses and the fix.
+Commit to `gh-pages` and push. Verify at `https://brendo.ca`, not the `github.io` URL. The apex DNS was repointed on 2026-09-08 and the domain now serves over HTTPS with *Enforce HTTPS* on; `README.md` §The DNS defect, resolved 2026-09-08 records what was wrong and what the records now hold.
