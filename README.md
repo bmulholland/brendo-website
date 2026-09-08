@@ -58,7 +58,7 @@ Three faces, three jobs.
 
 ### Layout: a build, then a release
 
-Full-bleed photograph, wordmark and sound line over its darkened lower left, then three bands: bio beside the venues, the set list full width, and the second photograph beside the booking details. Rules rather than cards, no boxes. The page is mostly black space.
+Full-bleed photograph, wordmark and sound line over its darkened lower left, then three bands: bio beside the venue list, the set list full width, and the second photograph beside the booking details. Rules rather than cards, no boxes. The page is mostly black space.
 
 That is not minimalism for its own sake. Brendan's set-construction philosophy is patience — long tension, careful transitions, the setup mattering more than the peak — and a page that shouts on every section is the opposite claim about the same person.
 
@@ -177,7 +177,7 @@ GitHub then issued a Let's Encrypt certificate covering `brendo.ca` and `www.bre
 
 **Add a set.** A new row in the `.sets` list. The number in `.set__n` is a position in the list, not an identifier, so renumber the rest. Add it to `DJ Press Kit` §Recorded Sets too, or the next person to derive this page from the vault will delete it.
 
-**Add a venue.** Same: the list here, and `DJ Press Kit` §Venues Played.
+**Add a venue.** Same: the list here, and `DJ Press Kit` §Venues Played. **Rooms only.** The list is grouped by city — Berlin, then Vancouver — and holds places he played, not the people who booked them. A collective, a promoter or a recurring event series belongs in the vault against the room it happened in, never here: Bad Collective ran the Halloween night *at Gisela*, and Beatginnings was a series for DJs new to the scene that ran *at MIA and Fortune Sound Club*. Listing either would double-count a room already in the column. Radio is off the list too — CiTR is a real credit and not a room.
 
 **Change the copy.** Almost certainly not a change to this repository. Find the claim's home in the table above and change it there first.
 
