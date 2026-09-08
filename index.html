@@ -1,33 +1,503 @@
-<html>
-  <head>
-    <title>brendo</title>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <style>
-      body {
-        font-family: 'Open Sans', sans-serif;
-      }
-      h1.logo {
-        font-weight: 600;
-      }
-      .logo .logo-highlight {
-        color: #3399FF;
-      }
-      .media-links {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="media-links">
-      <h1 class="logo">brend<span class="logo-highlight">o</span></h1>
-      <p> <a href="https://facebook.com/brendobrendo">facebook</a> </p>
-      <p> <a href="https://soundcloud.com/brendobrendo">soundcloud</a> </p>
-      <p> <a href="https://mixcloud.com/brendobrendo">mixcloud</a> </p>
-      <p> <a href="mailto:bookings@brendo.ca">bookings</a> </p>
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Brendo — Berlin DJ. Dark, psychedelic dance music: bass-led, chugging, and a bit haunted. Bookings: bookings@brendo.ca">
+<meta property="og:title" content="Brendo">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Dark, psychedelic dance music — bass-led, chugging, and a bit haunted. Berlin.">
+<meta property="og:image" content="https://brendo.ca/images/room.jpg">
+<meta property="og:image:width" content="2000">
+<meta property="og:image:height" content="1500">
+<meta property="og:image:alt" content="Brendo playing in a magenta-lit room, windows open onto a floodlit forest.">
+<meta property="og:url" content="https://brendo.ca/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#08060b">
+<link rel="canonical" href="https://brendo.ca/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<title>Brendo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;1,6..72,300&amp;family=Space+Mono:wght@400;700&amp;display=swap">
+<style>
+  /* Single-theme by intent: this page is a dark room. Every colour painted explicitly. */
+  :root {
+    --ink: #08060b;          /* near-black, faint violet — a club's dark is never neutral */
+    --ember: #e8202a;        /* the strip light over the mixer */
+    --ember-hi: #ff4a2e;
+    --bone: #ece5df;         /* warm off-white, film white */
+    --dim: #8d8189;          /* warm-violet grey */
+    --rule: #241d29;
+
+    --beat: 945ms;           /* two beats at 127 BPM — the collection's median tempo */
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--bone);
+    font-family: "Newsreader", Georgia, "Times New Roman", serif;
+    font-size: clamp(16px, 1.05vw + 13px, 19px);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Grain. His own rule: a black surface has to carry visible depth, never a flat field. */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+    opacity: .3;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  .wrap { width: min(1180px, 100% - 2.5rem); margin-inline: auto; }
+
+  .label {
+    font-family: "Space Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: .7rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin: 0;
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    min-height: min(78vh, 760px);
+    padding-top: 2rem;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 62% 46%;
+    z-index: 0;
+  }
+
+  /* the room is pulled down into the page rather than stopping at an edge */
+  .hero__veil {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(to top, var(--ink) 2%, rgba(8, 6, 11, .66) 30%, rgba(8, 6, 11, .08) 66%, rgba(8, 6, 11, .3)),
+      linear-gradient(to right, rgba(8, 6, 11, .94) 8%, rgba(8, 6, 11, .85) 52%, transparent 90%);
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    width: min(1180px, 100% - 2.5rem);
+    margin-inline: auto;
+    padding-bottom: clamp(2.5rem, 7vh, 5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .wordmark {
+    font-family: "Big Shoulders Display", "Haettenschweiler", "Arial Narrow", sans-serif;
+    font-weight: 800;
+    font-size: clamp(5rem, 16vw, 14rem);
+    line-height: .78;
+    letter-spacing: -.035em;   /* cramped */
+    margin: 0;
+    text-transform: lowercase;
+    color: var(--bone);
+    text-shadow: 0 .06em .5em rgba(8, 6, 11, .75);
+  }
+
+  .wordmark .o {
+    color: var(--ember);
+    text-shadow: 0 0 .06em var(--ink), 0 0 .3em rgba(232, 32, 42, .7);
+    animation: chug var(--beat) ease-in-out infinite;
+  }
+
+  @keyframes chug {
+    0%, 100% { text-shadow: 0 0 .06em var(--ink), 0 0 .22em rgba(232, 32, 42, .45); }
+    50%      { text-shadow: 0 0 .06em var(--ink), 0 0 .46em rgba(232, 32, 42, .95); }
+  }
+
+  .standfirst {
+    font-size: clamp(1.3rem, 1.9vw + .7rem, 2.1rem);
+    line-height: 1.3;
+    font-weight: 300;
+    max-width: 22ch;
+    margin: 0;
+    text-wrap: balance;
+    text-shadow: 0 .05em .6em rgba(8, 6, 11, .85);
+  }
+
+  .standfirst em { font-style: italic; color: var(--ember-hi); }
+
+  .origin { display: flex; align-items: center; gap: .8rem; color: var(--bone); }
+
+  .origin::after {
+    content: "";
+    flex: 1;
+    max-width: 11rem;
+    height: 1px;
+    background: linear-gradient(to right, rgba(236, 229, 223, .35), transparent);
+  }
+
+  /* ---------- sections ---------- */
+  section {
+    padding-block: clamp(3.5rem, 8vh, 6rem);
+    border-top: 1px solid var(--rule);
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  h2 {
+    font-family: "Big Shoulders Display", "Arial Narrow", sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 4vw, 3.2rem);
+    line-height: .9;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* ---------- sets ---------- */
+  .sets { display: flex; flex-direction: column; }
+
+  .set {
+    display: grid;
+    grid-template-columns: 3.2rem minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 1.2rem;
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--rule);
+    color: var(--bone);
+    text-decoration: none;
+    transition: padding-left .35s ease;
+  }
+
+  .set:first-child { border-top: 1px solid var(--rule); }
+
+  .set__n {
+    font-family: "Space Mono", monospace;
+    font-size: .72rem;
+    color: var(--dim);
+    letter-spacing: .1em;
+  }
+
+  .set__title {
+    font-family: "Big Shoulders Display", "Arial Narrow", sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.55rem, 3vw, 2.4rem);
+    line-height: 1;
+  }
+
+  .set__meta {
+    font-family: "Space Mono", monospace;
+    font-size: .72rem;
+    color: var(--dim);
+    letter-spacing: .07em;
+    white-space: nowrap;
+  }
+
+  .set:hover, .set:focus-visible {
+    background: linear-gradient(to right, rgba(232, 32, 42, .1), transparent 60%);
+    padding-left: .9rem;
+  }
+
+  .set:hover .set__title, .set:focus-visible .set__title { color: var(--ember-hi); }
+  .set:hover .set__n, .set:focus-visible .set__n { color: var(--ember-hi); }
+
+  /* ---------- played: portrait beside the venue list ---------- */
+  .played-grid {
+    display: grid;
+    grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .portrait {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+  }
+
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 22%;
+    display: block;
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent);
+    mask-image: linear-gradient(to bottom, #000 62%, transparent);
+  }
+
+  .venues {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2.2rem 1.8rem;
+  }
+
+  .venues h3 {
+    margin: 0 0 .85rem;
+    font-family: "Space Mono", monospace;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ember-hi);
+  }
+
+  .venues ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .38rem; }
+
+  .venues li {
+    font-family: "Space Mono", monospace;
+    font-size: .82rem;
+    line-height: 1.45;
+  }
+
+  /* ---------- booking ---------- */
+  .booking {
+    display: grid;
+    grid-template-columns: 1.25fr .75fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .mailto {
+    display: inline-block;
+    font-family: "Big Shoulders Display", "Arial Narrow", sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 5vw, 4rem);
+    line-height: .95;
+    letter-spacing: -.015em;
+    color: var(--bone);
+    text-decoration: none;
+    border-bottom: 2px solid var(--rule);
+    transition: color .3s ease, border-color .3s ease;
+    word-break: break-word;
+  }
+
+  .mailto:hover, .mailto:focus-visible { color: var(--ember-hi); border-color: var(--ember); }
+
+  .elsewhere { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 1.8rem; }
+
+  .elsewhere a {
+    font-family: "Space Mono", monospace;
+    font-size: .76rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--dim);
+    text-decoration: none;
+    padding-bottom: .25rem;
+    border-bottom: 1px solid transparent;
+    transition: color .25s ease, border-color .25s ease;
+  }
+
+  .elsewhere a:hover, .elsewhere a:focus-visible { color: var(--bone); border-color: var(--ember); }
+
+  a:focus-visible { outline: 2px solid var(--bone); outline-offset: 4px; }
+
+  .rider {
+    font-family: "Space Mono", monospace;
+    font-size: .74rem;
+    line-height: 1.85;
+    color: var(--dim);
+    border-left: 1px solid var(--rule);
+    padding-left: 1.4rem;
+  }
+
+  .rider b {
+    display: block;
+    color: var(--ember-hi);
+    font-weight: 700;
+    font-size: .7rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    margin-bottom: .7rem;
+  }
+
+  .rider span { color: var(--bone); }
+
+  footer {
+    padding-block: 2.4rem 3.4rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- entrance: a build, not a bounce ---------- */
+  .rise { opacity: 0; transform: translateY(14px); animation: rise 1.5s cubic-bezier(.16, .8, .3, 1) forwards; }
+  .rise:nth-child(1) { animation-delay: .1s; }
+  .rise:nth-child(2) { animation-delay: .34s; }
+  .rise:nth-child(3) { animation-delay: .58s; }
+
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rise { animation: none; opacity: 1; transform: none; }
+    .wordmark .o { animation: none; }
+    * { transition-duration: .01ms !important; }
+  }
+
+  @media (max-width: 820px) {
+    .hero { min-height: 68vh; }
+    .hero__img { object-position: 66% 46%; }
+    .hero__veil {
+      background:
+        linear-gradient(to top, var(--ink) 3%, rgba(8, 6, 11, .74) 38%, rgba(8, 6, 11, .3) 74%, rgba(8, 6, 11, .5)),
+        linear-gradient(to right, rgba(8, 6, 11, .85), rgba(8, 6, 11, .8) 52%, transparent);
+    }
+    .wordmark { font-size: clamp(4.4rem, 25vw, 9rem); }
+    .played-grid { grid-template-columns: 1fr; }
+    .portrait { aspect-ratio: 4 / 3; max-height: 58vh; }
+    .portrait img { object-position: 50% 18%; }
+    .booking { grid-template-columns: 1fr; gap: 2.2rem; }
+    .set { grid-template-columns: 2.2rem minmax(0, 1fr); }
+    .set__meta { grid-column: 2; white-space: normal; }
+  }
+</style>
+
+</head>
+<body>
+<header class="hero">
+  <img class="hero__img" src="images/room.jpg" width="2000" height="1500" fetchpriority="high" loading="eager" decoding="async" alt="Brendo playing in a magenta-lit room, windows open onto a floodlit forest.">
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <div class="hero__inner">
+    <p class="label origin rise">Berlin</p>
+    <h1 class="wordmark rise">brend<span class="o">o</span></h1>
+    <p class="standfirst rise">Dark, psychedelic dance music — bass-led, chugging, and <em>a bit haunted</em>.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="sets">
+    <div class="sec-head">
+      <h2>Recorded sets</h2>
+      <span class="label">SoundCloud</span>
     </div>
-  </body>
+
+    <div class="sets">
+      <a class="set" href="https://soundcloud.com/brendobrendo/live-at-sus-war-gestern-2024-12-07">
+        <span class="set__n">01</span>
+        <span class="set__title">Live at Süß war Gestern</span>
+        <span class="set__meta">Berlin · 07.12.2024</span>
+      </a>
+      <a class="set" href="https://soundcloud.com/brendobrendo/live-at-futuristische-feen-festival-2024-berlin-underground-techno">
+        <span class="set__n">02</span>
+        <span class="set__title">Live at Futuristische Feen</span>
+        <span class="set__meta">Festival · 2024</span>
+      </a>
+      <a class="set" href="https://soundcloud.com/brendobrendo/steamkat/s-EmN03LNapSI">
+        <span class="set__n">03</span>
+        <span class="set__title">Steamkat</span>
+        <span class="set__meta">Mix</span>
+      </a>
+      <a class="set" href="https://soundcloud.com/brendobrendo/dark-ambivalence">
+        <span class="set__n">04</span>
+        <span class="set__title">Dark Ambivalence</span>
+        <span class="set__meta">Mix</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="played">
+    <div class="sec-head">
+      <h2>Played</h2>
+    </div>
+
+    <div class="played-grid">
+      <figure class="portrait">
+        <img src="images/booth.jpg" width="788" height="1400" loading="lazy" decoding="async" alt="Brendo at the decks, lit red from the mixer.">
+      </figure>
+
+      <div class="venues">
+        <div>
+          <h3>Berlin</h3>
+          <ul>
+            <li>Süß war Gestern</li>
+            <li>Gisela</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Vancouver</h3>
+          <ul>
+            <li>MIA</li>
+            <li>Odyssey</li>
+            <li>The Waldorf</li>
+            <li>Fortune Sound Club</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Festivals &amp; radio</h3>
+          <ul>
+            <li>Futuristische Feen</li>
+            <li>Tribal River Renegade</li>
+            <li>Beatginnings</li>
+            <li>CiTR Radio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bookings">
+    <div class="sec-head">
+      <h2>Bookings</h2>
+    </div>
+
+    <div class="booking">
+      <div>
+        <a class="mailto" href="mailto:bookings@brendo.ca">bookings@brendo.ca</a>
+        <div class="elsewhere">
+          <a href="https://soundcloud.com/brendobrendo">SoundCloud</a>
+          <a href="https://www.instagram.com/brendobrendo/">Instagram</a>
+          <a href="https://www.mixcloud.com/brendobrendo/">Mixcloud</a>
+        </div>
+      </div>
+
+      <div class="rider">
+        <b>Rider</b>
+        Minimum <span>2× Pioneer CDJ-2000NXS2</span><br>
+        Preferred <span>3× CDJ-3000 via Pro DJ Link</span><br>
+        Mixer <span>Allen &amp; Heath Xone:96</span><br>
+        Also fine <span>Xone:92, DJM-V10 (notice)</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+  <footer class="wrap">
+    <span class="label">Brendo · Berlin</span>
+    <span class="label">Peak time &amp; after hours</span>
+  </footer>
+
+</body>
 </html>

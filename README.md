@@ -1,0 +1,206 @@
+# brendo.ca
+
+The public site for **Brendo** — Brendan Mulholland's DJ project. One static page: who he is, what it sounds like, four recorded sets, where he has played, the rider, and the booking address. It exists so that a promoter handed a link lands somewhere that transmits the sound rather than a list of platform icons.
+
+This file explains why the page looks and reads the way it does. `CLAUDE.md` is the operative contract for anyone — person or agent — about to change it; `AGENTS.md` is a symlink to it, so Codex and Claude read the same file and it cannot drift.
+
+---
+
+## The short version
+
+The page is deliberately small. Brendan's brief was the vibe rather than the content, and the content constraint runs the same way: nearly everything that could be said about this project either already lives somewhere better or is not yet settled enough to publish. So the page carries the few things that are true, settled, and his, and stops.
+
+## Where the facts come from
+
+**This repository holds no facts of its own.** Everything on the page has a home in the Obsidian vault at `~/Documents/Obsidian`, and that vault is the source of truth. The site is a *derived artifact* — re-derived by reading the source, never generated from it by a script. This is the same relationship the vault's own root instruction files have with their rationale documents, and it is deliberate: a generator would freeze one reading of the source and quietly rot.
+
+| On the page | Its home |
+|---|---|
+| The line under the wordmark | `Canon/Music/Brendo's Sound — Territory and Description.md` §How to actually describe the sound |
+| Recorded sets, venues, rider | `Canon/Music/DJ Press Kit.md` |
+| Which photographs exist and may be used | `Canon/Music/DJ Press Kit.md`, head section |
+| The domain's own state and open work | `Canon/Music/DJ Press Kit.md` §brendo.ca — the one surface he owns |
+| Aesthetic constraints | `Canon/Self/Taste and Presentation/Personal Style.md` §Nightlife and DJing |
+| Why any of this is the sound | `Canon/Music/DJ Identity.md` |
+
+The route runs both ways. `DJ Press Kit` §brendo.ca records that this site exists and depends on it, so a vault session editing the venue list can see that the change is not finished when the document is saved.
+
+---
+
+## The design, and where each decision came from
+
+### Palette: near-black and hot red
+
+There is **no commissioned brand identity**. The 2026 Weiter Studio engagement delivered brand strategy and copy — a moodboard, a positioning concept, a bio — and no logo, palette or typeface. The yellow-on-black moodboard in the vault is Weiter's own slide styling, and mistaking it for a delivered brand colour is the easiest error available here.
+
+So the palette was derived from the photographs. Sampling the red-lit booth shot returns almost exactly two things: near-black, and a ramp of hot red from `#180000` up to `#a81830`, with a faint blue-violet in the smoke. That became:
+
+```
+--ink      #08060b   near-black, biased violet — a club's dark is never neutral grey
+--ember    #e8202a   the strip light over the mixer
+--ember-hi #ff4a2e   hover, small red labels, and the italic phrase
+--bone     #ece5df   warm off-white — film white, not #fff
+--dim      #8d8189   warm-violet grey
+```
+
+Corroborating rather than driving the choice: Brendan's SoundCloud avatar and banner are also black-and-red. He had already converged on this without writing it down.
+
+The one place boldness is spent is the `o` of the wordmark. Everything else stays quiet. That also carries a small piece of continuity — the 2015 site had a coloured `o` too, in `#3399FF`.
+
+### Type: Big Shoulders Display / Newsreader / Space Mono
+
+Three faces, three jobs.
+
+- **Big Shoulders Display** at 800 for the wordmark, 700 for section headings and the booking address, and 500 for set titles. Condensed, industrial, drawn for civic signage. The wordmark uses `-0.035em` tracking so the letters press against each other — the brand concept's word is *cramped*, and the type is where that gets expressed rather than in a caption saying so.
+- **Newsreader** at 300, upright and italic, for the single line of prose. A low-contrast serif against condensed industrial sans is the deliberate pairing: it keeps the page from reading as generic techno-brutalism and gives *a bit haunted* somewhere to live.
+- **Space Mono** for labels, dates, venues and the rider — the flyer-and-tech-spec register, where the information is genuinely list-shaped.
+
+### Layout: a build, then a release
+
+Full-bleed photograph, wordmark and sound line over its darkened lower left, then everything after it quiet: three plain sections, rules rather than cards, no boxes. The page is mostly black space.
+
+That is not minimalism for its own sake. Brendan's set-construction philosophy is patience — long tension, careful transitions, the setup mattering more than the peak — and a page that shouts on every section is the opposite claim about the same person.
+
+### Motion: two beats at 127 BPM
+
+The glow on the wordmark's `o` breathes on a `945ms` cycle. That is two beats at 127 BPM, the median tempo of his record collection as measured in the vault's library analysis. It is slow enough to read as atmosphere rather than a blinking element, and it is the one detail on the page that could only belong to this subject.
+
+The production review corrected the implementation to complete the dim–bright–dim cycle within 945ms. The original `alternate` animation took 945ms in each direction, doubling the documented period.
+
+Everything else moves once: a staggered rise on load, and hover states on the set list. All of it is disabled under `prefers-reduced-motion`.
+
+### Grain
+
+A fixed SVG `feTurbulence` layer at 30% opacity in `overlay` blend mode. This is a requirement rather than a flourish: `Personal Style` §Nightlife and DJing states that a black surface has to carry visible texture rather than read as a flat field, and the page is almost entirely black surface.
+
+---
+
+## What is deliberately not here
+
+**No bio.** Both bios that exist are blocked. The June 2026 press copy leans on *hypnotic* and *driving* — two words Brendan explicitly rules out as descriptions of his sound, and a reader who has heard him play independently flagged the same sentence. The draft replacement in the vault is flagged as not yet checked in his voice. Writing a third one here would be inventing copy in the one place least equipped to get it right. **The bio is the real constraint on the page being any bigger than it is**, and it is vault work.
+
+**No genre names.** `DJ Identity` §Genre Language Does Not Describe the Sound rules that in this corner of dance music genre labels are retail categories, contested and misleading. The page describes the music instead. Three words are ruled out outright: *driving* (reads as slamming), *hypnotic* (reads as a different lane), and *psychedelic* hitched to the psy- prefix.
+
+**No Facebook.** The account exists and is not maintained. Removed deliberately, not overlooked.
+
+**No AI-generated artwork.** The current SoundCloud avatar and banner are AI composites — blood moon, mountains, brutalist slabs. The palette is right, but the image is the visual form of a failure mode the vault already names in the music itself: the correct territory rendered without character. It also spends the one real advantage here, which is genuine photographs of genuine nights.
+
+**No analytics, no fonts beyond Google Fonts, no cookies, no JavaScript.** There is nothing on this page that needs any of them.
+
+---
+
+## The photographs
+
+Two, both real, both his.
+
+**`images/room.jpg` — the hero.** A wide magenta-lit interior: tall windows onto a floodlit garden, a disco ball, Brendan blurred mid-motion behind CDJs. It is the strongest image of the set because it has a *place* in it, and because it reads as dark disco rather than techno — which is where the vault puts his centre of gravity, while techno is the base texture underneath.
+
+It is also the image Weiter Studio picked out, which is worth something given that music branding is their trade.
+
+**Fully identified.** Apple Photos asset `449163A8-908D-47B1-B321-6D6215B4FFB6` (`IMG_2906.HEIC`), in his `DJ` album. Taken **28 July 2024 at 04:12 CEST** on an iPhone 14 Pro, GPS `52.36891, 13.65047` — **Schmöckwitzer Werder, Berlin**. Per Brendan's account the event is Futuristische Feen Festival, held at a hotel there, and by his description it was unadvertised and friends-of-friends. The motion blur is a 0.7-second handheld exposure at ISO 1600, not a filter.
+
+The file used here is downscaled from the 4032 × 3024 original. His earlier estimate — two years ago, probably August — was right on the year and a month out; his own recording of a Feen Festival set is filed as `28.08.2024`, which matches the day and not the month, so that filename is probably a typo. A near-identical frame five seconds earlier, `9B8ADAA4-CE5F-42F7-88C3-9C9281D26DBB`, has him more central with his arms out and shows more of the window wall. It is a reasonable alternate and is not currently downloaded from iCloud.
+
+**`images/booth.jpg` — the second beat.** Apple Photos asset `083F732D-77F6-4FA1-B966-50D5500930A1`. Brendan at the decks lit red from the mixer, absorbed, in a cramped booth. It sits beside the venue list, where a legible face and visibly working hands do credibility work that the hero cannot. The library dates it near the December 7 2024 Süß war Gestern set, but the image carries no location metadata, so it must not be captioned with that venue.
+
+A third image exists and is not used: a sharp horizontal shot of Brendan smiling behind the decks (`C40F4E2F-9580-415B-AAE9-9221AC185791`). It is warm and very usable, and it reads as a friendly guy rather than as this music. Good for a booking email; wrong for the top of this page.
+
+`images/promo.png` is left over from 2017 and is unreferenced.
+
+---
+
+## Deployment
+
+GitHub Pages, from the **`gh-pages`** branch of `bmulholland/brendo-website`. No build step: commit and push, and Pages serves the repository root. `CNAME` binds it to the apex domain.
+
+Verify at `https://brendo.ca` rather than the `github.io` URL — the custom domain is the part that has historically been broken, and it is broken now.
+
+### The DNS defect
+
+As of 2026-09-08 the apex `A` records point at `192.30.252.153` and `192.30.252.154`. That is a **retired** GitHub Pages address block. It still answers on plain HTTP, which is why nobody noticed, but the certificate served there covers only `github.com`, so **`https://brendo.ca` fails outright** and Pages' *Enforce HTTPS* setting cannot be enabled.
+
+The four addresses GitHub currently documents for an apex domain:
+
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+Replace the two old `A` records with those four, wait for propagation, then turn on *Enforce HTTPS* in the repository's Pages settings. Leave the `TXT` records alone — they carry Google Workspace SPF and site verification for the `@brendo.ca` mail, which is what `bookings@brendo.ca` runs on and is entirely independent of Pages.
+
+Until that is done, do not hand anyone an `https://` link to this domain.
+
+---
+
+## Making changes
+
+**Swap a photograph.** Drop the new file in `images/`, update the `src` and the `alt`, and check the `object-position` — both images are cropped hard and the framing is doing real work. Then record what it is in `DJ Press Kit`, including what is *not* known about it.
+
+**Add a set.** A new row in the `.sets` list. The number in `.set__n` is a position in the list, not an identifier, so renumber the rest. Add it to `DJ Press Kit` §Recorded Sets too, or the next person to derive this page from the vault will delete it.
+
+**Add a venue.** Same: the list here, and `DJ Press Kit` §Venues Played.
+
+**Change the copy.** Almost certainly not a change to this repository. Find the claim's home in the table above and change it there first.
+
+## Known gaps
+
+Everything above is a decision that was made deliberately. These are not — they are things the first build did not get to, listed so nobody has to rediscover them and so nobody mistakes them for choices.
+
+- ~~No favicon.~~ Closed: a local SVG red `o` on the page's near-black, with a 32px ICO fallback. The icon is a simple drawn echo of the wordmark, with no font request.
+- ~~No image loading or decoding hints.~~ Closed: eager, high-priority hero; lazy booth; async decoding and intrinsic dimensions on both.
+- **Hero resolution:** the supplied replacement is 2000 × 1500, up from 1280 × 960. It still enlarges at 2560px and on high-density screens. The original is now identified, so a larger export remains available if that softness is unacceptable; this review did not replace the concurrently supplied photograph.
+- **`og:image` points at `https://brendo.ca/images/room.jpg`**, which cannot resolve until the DNS defect above is fixed. Link previews will be blank until then. This is a consequence of the DNS problem rather than a separate bug, but it will look like a separate bug.
+- ~~No canonical URL and no `theme-color`.~~ Closed, with `og:type`, image dimensions and image alt text also supplied.
+- ~~Hero contrast unmeasured.~~ Closed for the tested viewports; measurements and their scope are below. The veil and the red letter's dark supporting shadow were strengthened after failures.
+- ~~Only headless Chrome at two widths.~~ Expanded to installed Chrome and headless Firefox. **Safari and a physical phone remain untested.** Safari 26.6.2's WebDriver refused a session because “Allow remote automation” is disabled; no Safari setting was changed.
+
+## Production review — 2026-09-08
+
+**Deployment still needs the DNS repair and Brendan's push.** Read-only `dig` returned `192.30.252.153` and `192.30.252.154`; no apex AAAA answer. `curl -I https://brendo.ca` failed with certificate hostname mismatch. The replacement A records above still match [GitHub's apex-domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). No DNS, Pages setting or remote branch was changed. The canonical and social image URLs intentionally remain HTTPS; local checks cannot establish a working public preview.
+
+### Copy comparison — differences left for the owner
+
+The standfirst matches the sound home's quoted line verbatim, including punctuation. All four set URLs match `DJ Press Kit` §Recorded Sets, including Steamkat's secret-link suffix. Steamkat and Dark Ambivalence retain their exact titles. The live Süß title moves `2024-12-07` into the adjacent date in German numeric order. The Feen title moves the year and “Festival” into its metadata; the venue list shortens “Futuristische Feen Festival” to “Futuristische Feen”. All other venue names and their groups match. Berlin, the booking address and the footer's peak/after-hours slots have support in the named vault homes. Both image alts describe visible content without adding an event caption.
+
+**The live SoundCloud title conflicts with the Süß date.** All four set destinations and the artist profile returned HTTP 200 during review. The [Süß recording](https://soundcloud.com/brendobrendo/live-at-sus-war-gestern-2024-12-07) currently titles itself “Live at Süß War Gestern (2024-12-06)”, while its URL, the vault and the page give December 7. The title alone does not settle the event date. The other remote titles also differ from the vault's display labels: “Steam Kat”, “Dark Ambivalence - 200x200”, and “Live at Futuristische Feen Festival 2024 (Berlin Underground Techno)”. The site keeps the vault's labels and its rule against genre descriptions. Playback was not tested. The date conflict needs resolution at the source before changing the site.
+
+**The rider is an incomplete rendering of the vault:** it omits preferred `CDJ-3000X`, labels the preferred Xone:96 simply “Mixer”, and abbreviates “advance notice required” for the DJM-V10 to “notice”. The minimum player model/count, preferred three-player count and Pro DJ Link, and acceptable mixer models match. These differences were reported and left unchanged under the review's instruction to stop before changing vault-homed facts.
+
+The source photographs and their README provenance were updated concurrently by another session. This review used the resulting **2000 × 1500** hero, not the original 1280 × 960 upload. `CLAUDE.md` still says both photographs have unresolved provenance, while the current README and vault identify the hero. That factual inconsistency is reported here rather than silently rewritten. The photo's July date does not establish a correction to the recording date; the site only gives the Feen set's year.
+
+### Rendering and accessibility
+
+Chrome and Firefox 155.0.1 were driven against a local HTTP server. Firefox used its built-in WebDriver BiDi endpoint and an isolated profile. Tested widths were **320, 360, 390, 768, 819, 820, 821, 1024, 1440, 1920 and 2560px** at 900px height in Firefox; Chrome covered **320, 390, 819, 820, 821, 1440 and 2560px**. In both engines, document scroll width equalled viewport width at every sampled size. Firefox also covered 320 × 568, 390 × 844, 820 × 390, 1440 × 1080 and 2560 × 1440. These are desktop viewport tests, not physical-phone coverage.
+
+The Played grid switches from one column at 820px to two at 821px. Its image fills its frame in both engines. An explicit portrait width prevents its `max-height` from shrinking it horizontally on tablets. Short landscape screens now retain space above the hero text. Heading order is h1 → h2, with h3 venue groups; the page now has a main landmark. Both photographs have descriptive alt text. Firefox rendered the gradient mask and aspect ratio; both prefixed and standard mask declarations remain. `text-wrap: balance` is an enhancement: ordinary wrapping remains the fallback.
+
+All eight links were traversed with Tab in both browsers. Every focused link had a **2px `#ece5df` outline with 4px offset**; Firefox's 320px checks also confirmed the outline fits inside the viewport. The set numbers changed from `#2c3654` (**1.693:1** on `#08060b`) to `#8d8189` (**5.411:1**). Small red headings and hovered numbers now use existing `#ff4a2e` (**6.023:1**), since `#e8202a` was only **4.486:1** on that background. Those solid-colour ratios use the CSS colours, before grain.
+
+**Hero contrast uses rendered pixels, including grain and shadows.** In Firefox, after fonts loaded and entrance animations completed, the glow was frozen at its brightest point. An otherwise identical screenshot with transparent text supplied the background. Separate white-on-black glyph masks selected opaque interior pixels (coverage at least 250/255), excluding antialiasing fringes. The table gives the lowest sampled ratio for each text run, with the actual foreground/background pixel pair. Thresholds are 3:1 for the large wordmark and 4.5:1 for the standfirst, including its smaller mobile size; [WCAG's contrast guidance](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) explains those thresholds. This is a contrast check, not a claim of complete WCAG conformance.
+
+| Viewport | Wordmark bone | Red `o` | Standfirst bone | Italic phrase |
+|---|---|---|---|---|
+| 320 × 900 | 7.435:1 · `#d0a5a3` / `#3c1216` | 4.129:1 · `#e4202a` / `#1f080e` | 15.129:1 · `#e5ded8` / `#09060b` | 5.836:1 · `#fa4a2e` / `#09060b` |
+| 1440 × 900 | 7.750:1 · `#d0a3a2` / `#370b11` | 3.994:1 · `#e8212b` / `#2e0b12` | 15.494:1 · `#e8e1dc` / `#09070d` | 5.776:1 · `#fa492e` / `#0a070c` |
+
+The same glyph test passed at 820, 821 and 2560px widths. Across those five 900px-high viewports the lowest ratios were **7.435:1** for the bone wordmark, **3.994:1** for the red letter, **15.129:1** for the bone standfirst and **5.776:1** for its emphasis. The Berlin label was changed to bone for the photographic background. These samples depend on the current photograph, crop, fonts, veil and glow; changing any of them reopens the check.
+
+Reduced motion was tested in a separate Firefox profile with `ui.prefersReducedMotion=1`: the media query matched, there were no active animations, all entrance elements had opacity 1 and no transform, and scroll behaviour was `auto`. A forced Arial fallback with both image URLs broken retained 320px document width. Safari, physical devices and assistive-technology speech output remain outside this review's observed coverage.
+
+The red glyph also passed at the additional short/tall viewport sizes above. The lowest of those samples was **3.943:1** at 820 × 390 (`#e7202a` over `#2c0d16`).
+
+### Correctness, performance and consistency
+
+HTML Tidy found no structural errors after escaping the font URL's ampersands. Its remaining warnings call `fetchpriority` and `decoding` proprietary; this installed validator predates those standard attributes. CSS was read for cascade and no-op rules. Removed unused colour variables and the `background-color` transition that could not animate the set links' gradient image. Removed body overflow clipping so the width checks measure layout instead of hiding defects. The grain remains fixed at 30% opacity with overlay blending, but its layer now covers one viewport instead of four. Focus styles, SoundCloud capitalization, font-weight documentation and the full glow period are consistent.
+
+The hero is eager and high priority; the booth is lazy, and both have async decoding and intrinsic dimensions. The hero remains a **580,115-byte JPEG**, so its transfer is still the dominant local asset. The original JPEG remains the social image. Google Fonts still adds a blocking stylesheet followed by font downloads: both preconnects and `display=swap` remain, and the unused Newsreader 400 request was removed. Firefox loaded Big Shoulders Display at 500/700/800, Newsreader 300 upright/italic, and Space Mono 400/700. Cross-origin timing entries hid transfer sizes, so this review does not claim a measured font-byte saving or a production LCP score. No preload was added for third-party font URLs that Google may change.
+
+No JavaScript, analytics, libraries, build step, light theme, Facebook link or bio was added. The review did not edit the vault. The unused legacy `images/promo.png` remains unrequested by the page.
+
+## Open
+
+- The bio, which is what stands between this and a fuller page.
+- Whether the SoundCloud artwork gets replaced with these photographs — same job, same images.
+- An `/epk` page, so `bookings@brendo.ca` can point promoters at a URL Brendan owns instead of a Notion page in someone else's workspace. The rider is already here; the bio is the blocker again.
