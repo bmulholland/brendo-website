@@ -155,6 +155,22 @@
     background: linear-gradient(to right, rgba(236, 229, 223, .35), transparent);
   }
 
+  /* ---------- bio ---------- */
+  #about {
+    padding-block: clamp(2.6rem, 6vh, 4.2rem);
+    border-top: 1px solid var(--rule);
+  }
+
+  .bio {
+    margin: 0;
+    max-width: 46ch;
+    font-size: clamp(1.05rem, .7vw + .85rem, 1.3rem);
+    line-height: 1.62;
+    font-weight: 300;
+    color: var(--bone);
+    text-wrap: pretty;
+  }
+
   /* ---------- sections ---------- */
   section {
     padding-block: clamp(3.5rem, 8vh, 6rem);
@@ -399,6 +415,11 @@
 
 <main class="wrap">
 
+
+  <section id="about">
+    <p class="bio">Brendo is a Berlin-based DJ and long-time collector. He moves between softer dark techno, dark disco, indie dance and leftfield electronics, building patient arcs that ebb and flow toward emotional peaks.</p>
+  </section>
+
   <section id="sets">
     <div class="sec-head">
       <h2>Recorded sets</h2>
@@ -406,25 +427,30 @@
     </div>
 
     <div class="sets">
-      <a class="set" href="https://soundcloud.com/brendobrendo/live-at-sus-war-gestern-2024-12-07">
+      <a class="set" href="https://soundcloud.com/brendobrendo/bad-feen-halloween-2025-bad-collective-x-futuristische-feen">
         <span class="set__n">01</span>
+        <span class="set__title">Live at Bad Feen Halloween</span>
+        <span class="set__meta">31.10.2025 · 1h58</span>
+      </a>
+      <a class="set" href="https://soundcloud.com/brendobrendo/brendo-live-at-futurische-feen-festival-20250831">
+        <span class="set__n">02</span>
+        <span class="set__title">Live at Futuristische Feen Festival</span>
+        <span class="set__meta">31.08.2025 · 2h06</span>
+      </a>
+      <a class="set" href="https://soundcloud.com/brendobrendo/live-at-sus-war-gestern-2024-12-07">
+        <span class="set__n">03</span>
         <span class="set__title">Live at Süß war Gestern</span>
-        <span class="set__meta">Berlin · 06.12.2024</span>
+        <span class="set__meta">06.12.2024 · 3h15</span>
       </a>
       <a class="set" href="https://soundcloud.com/brendobrendo/live-at-futuristische-feen-festival-2024-berlin-underground-techno">
-        <span class="set__n">02</span>
-        <span class="set__title">Live at Futuristische Feen</span>
-        <span class="set__meta">Festival · 2024</span>
-      </a>
-      <a class="set" href="https://soundcloud.com/brendobrendo/steamkat/s-EmN03LNapSI">
-        <span class="set__n">03</span>
-        <span class="set__title">Steamkat</span>
-        <span class="set__meta">Mix</span>
-      </a>
-      <a class="set" href="https://soundcloud.com/brendobrendo/dark-ambivalence">
         <span class="set__n">04</span>
-        <span class="set__title">Dark Ambivalence</span>
-        <span class="set__meta">Mix</span>
+        <span class="set__title">Live at Futuristische Feen Festival</span>
+        <span class="set__meta">2024 · 2h01</span>
+      </a>
+      <a class="set" href="https://soundcloud.com/brendobrendo/sets/live-sets-1">
+        <span class="set__n">05</span>
+        <span class="set__title">Live Sets</span>
+        <span class="set__meta">10 sets · 16h14</span>
       </a>
     </div>
   </section>

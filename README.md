@@ -78,7 +78,9 @@ A fixed SVG `feTurbulence` layer at 30% opacity in `overlay` blend mode. This is
 
 ## What is deliberately not here
 
-**No bio.** Both bios that exist are blocked. The June 2026 press copy leans on *hypnotic* and *driving* — two words Brendan explicitly rules out as descriptions of his sound, and a reader who has heard him play independently flagged the same sentence. The draft replacement in the vault is flagged as not yet checked in his voice. Writing a third one here would be inventing copy in the one place least equipped to get it right. **The bio is the real constraint on the page being any bigger than it is**, and it is vault work.
+**A short bio, and no more than that.** Both fuller bios in the vault are blocked. The June 2026 press copy leans on *hypnotic* and *driving* — two words Brendan explicitly rules out as descriptions of his sound, and a reader who has heard him play independently flagged the same sentence.
+
+What the page carries is the vault's draft bio, trimmed. Its first sentence restated the standfirst almost word for word and its last duplicated the Played list, so both were cut; what is left is the two clauses that say something neither of those does — the range he moves across, and the shape of a set. Brendan approved adding it on 8 September 2026. Anything longer is still vault work: the full replacement bio has never been checked in his voice.
 
 **No genre names.** `DJ Identity` §Genre Language Does Not Describe the Sound rules that in this corner of dance music genre labels are retail categories, contested and misleading. The page describes the music instead. Three words are ruled out outright: *driving* (reads as slamming), *hypnotic* (reads as a different lane), and *psychedelic* hitched to the psy- prefix.
 
@@ -115,6 +117,12 @@ Every JPEG here has had its `APP1` and `APP13` segments removed — EXIF, XMP an
 Do the same to any image added later. `sips` preserves EXIF through a resize, so metadata survives an export unless something removes it; verify by parsing the exported file for surviving `APP1`, `APP13` or `COM` segments rather than assuming. A GPS-only check is not enough: XMP rides in `APP1` under a different identifier, and PNG and HEIC keep metadata in chunks and boxes a JPEG-segment check never reaches. The capture provenance belongs in the vault's `DJ Press Kit`, where it is useful; the web copies need none of it.
 
 Earlier commits contain both the unstripped images and three README revisions that printed the coordinates in plain text. Brendan reviewed that on 8 September 2026 and chose to leave it — the location is a hotel and not sensitive — so the history is deliberately not rewritten.
+
+### The set list mirrors the SoundCloud spotlight
+
+The five rows under Recorded Sets are Brendo's SoundCloud **spotlight**, in the order he has pinned them there — not a hand-picked selection and not everything he has uploaded. Brendan asked for that on 8 September 2026, and it makes the profile the single place he curates: reorder the spotlight and this list should be brought into line, rather than the two drifting apart.
+
+The right column is one shape throughout, `when · length`, read from the SoundCloud API rather than typed from the titles. His own titles carry dates in three different formats and one carries a genre phrase the page rules out, so the titles here are normalised and the dates moved into that column, which is also what separates the two Futuristische Feen entries. The fifth row is the *Live Sets* playlist, which is the fifth spotlight item.
 
 ### Image exports
 
@@ -182,7 +190,7 @@ Everything above is a decision that was made deliberately. These are not — the
 - ~~No canonical URL and no `theme-color`.~~ Closed, with `og:type`, image dimensions and image alt text also supplied.
 - ~~`README.md` and the agent contracts served as public pages at `https://brendo.ca/README.md`.~~ Closed by `_config.yml`, which excludes them from the Jekyll build.
 - ~~Hero contrast unmeasured.~~ Closed for the tested viewports; measurements and their scope are below. The veil and the red letter's dark supporting shadow were strengthened after failures.
-- ~~Only headless Chrome at two widths.~~ Expanded to installed Chrome and headless Firefox. **Safari and a physical phone remain untested.** Safari 26.6.2's WebDriver refused a session because “Allow remote automation” is disabled; no Safari setting was changed.
+- ~~Only headless Chrome at two widths.~~ Closed. Chrome and headless Firefox by machine; Brendan checked desktop Safari and iPhone on 8 September 2026 and reported both good.
 
 ## Production review — 2026-09-08
 
